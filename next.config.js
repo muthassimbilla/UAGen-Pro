@@ -7,8 +7,8 @@ const nextConfig = {
         has: [
           {
             type: 'protocol',
-            value: 'http'
-          }
+            value: 'http', // শুধু HTTP হলে redirect হবে
+          },
         ],
         destination: 'https://updatecontent.site/:path*',
         permanent: true,
