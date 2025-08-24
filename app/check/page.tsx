@@ -720,7 +720,7 @@ export default function UserAgentCheckPage() {
   }
 
   return (
-    <div className="min-h-screen p-4 md:p-6 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+    <div className="min-h-screen p-4 md:p-6 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 dark:from-slate-900 dark:via-blue-900 dark:to-slate-900">
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
@@ -783,7 +783,7 @@ export default function UserAgentCheckPage() {
                   </Button>
                 </div>
                 {userAgents.length > 0 && (
-                  <div className="p-3 bg-gray-50 rounded-lg">
+                  <div className="p-3 bg-slate-50 dark:bg-slate-800/90 rounded-lg">
                     <p className="text-sm text-gray-600 mb-2">{userAgents.length}টি ইউজার এজেন্ট লোড করা হয়েছে</p>
                     <div className="max-h-32 overflow-y-auto text-xs font-mono">
                       {userAgents.slice(0, 3).map((ua, index) => (
@@ -887,7 +887,10 @@ export default function UserAgentCheckPage() {
             <CardContent>
               <div className="space-y-6 max-h-96 overflow-y-auto">
                 {checkResults.map((result, index) => (
-                  <div key={index} className="p-6 bg-gray-50 rounded-lg space-y-4 border-l-4 border-blue-500">
+                  <div
+                    key={index}
+                    className="p-6 bg-slate-50 dark:bg-slate-800/90 rounded-lg space-y-4 border-l-4 border-blue-500"
+                  >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         {result.isValid ? (
@@ -1015,7 +1018,7 @@ export default function UserAgentCheckPage() {
 
                       <TabsContent value="security" className="space-y-3">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="p-3 bg-white rounded border">
+                          <div className="p-3 bg-white dark:bg-slate-700/50 rounded border dark:border-slate-600">
                             <h4 className="font-medium mb-2">🔒 নিরাপত্তা স্থিতি</h4>
                             <div className="space-y-1 text-sm">
                               <div>
@@ -1028,7 +1031,7 @@ export default function UserAgentCheckPage() {
                               <div>সন্দেহজনক: {result.security.isSuspicious ? "⚠️ হ্যাঁ" : "✅ না"}</div>
                             </div>
                           </div>
-                          <div className="p-3 bg-white rounded border">
+                          <div className="p-3 bg-white dark:bg-slate-700/50 rounded border dark:border-slate-600">
                             <h4 className="font-medium mb-2">👁️ ফিঙ্গারপ্রিন্টিং</h4>
                             <div className="space-y-1 text-sm">
                               <div>
@@ -1043,9 +1046,9 @@ export default function UserAgentCheckPage() {
                           </div>
                         </div>
                         {result.security.threats.length > 0 && (
-                          <div className="p-3 bg-red-50 rounded border border-red-200">
-                            <h4 className="font-medium text-red-800 mb-2">⚠️ সনাক্তকৃত হুমকি</h4>
-                            <ul className="text-sm text-red-700 space-y-1">
+                          <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded border border-red-200 dark:border-red-800">
+                            <h4 className="font-medium text-red-800 dark:text-red-300 mb-2">⚠️ সনাক্তকৃত হুমকি</h4>
+                            <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
                               {result.security.threats.map((threat, i) => (
                                 <li key={i}>• {threat}</li>
                               ))}
@@ -1056,7 +1059,7 @@ export default function UserAgentCheckPage() {
 
                       <TabsContent value="compatibility" className="space-y-3">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="p-3 bg-white rounded border">
+                          <div className="p-3 bg-white dark:bg-slate-700/50 rounded border dark:border-slate-600">
                             <h4 className="font-medium mb-2">🌐 ব্রাউজার সাপোর্ট</h4>
                             <div className="space-y-1 text-sm">
                               <div>আধুনিক: {result.compatibility.browserSupport.modern ? "✅ হ্যাঁ" : "❌ না"}</div>
@@ -1064,7 +1067,7 @@ export default function UserAgentCheckPage() {
                               <div>অচল: {result.compatibility.browserSupport.outdated ? "🔴 হ্যাঁ" : "✅ না"}</div>
                             </div>
                           </div>
-                          <div className="p-3 bg-white rounded border">
+                          <div className="p-3 bg-white dark:bg-slate-700/50 rounded border dark:border-slate-600">
                             <h4 className="font-medium mb-2">⚡ পারফরম্যান্স</h4>
                             <div className="space-y-1 text-sm">
                               <div>
@@ -1085,7 +1088,10 @@ export default function UserAgentCheckPage() {
                       <TabsContent value="recommendations" className="space-y-3">
                         <div className="space-y-2">
                           {result.recommendations.map((rec, i) => (
-                            <div key={i} className="p-3 bg-blue-50 rounded border border-blue-200 text-sm">
+                            <div
+                              key={i}
+                              className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded border border-blue-200 dark:border-blue-800 text-sm"
+                            >
                               {rec}
                             </div>
                           ))}
@@ -1094,7 +1100,7 @@ export default function UserAgentCheckPage() {
                     </Tabs>
 
                     {/* User agent string */}
-                    <div className="mt-4 p-3 bg-gray-100 rounded text-xs font-mono break-all">
+                    <div className="mt-4 p-3 bg-slate-100 dark:bg-slate-800/90 rounded text-xs font-mono break-all">
                       <div className="text-gray-600 mb-1">ইউজার এজেন্ট স্ট্রিং ({result.details.length} অক্ষর):</div>
                       {result.details.userAgent}
                     </div>
@@ -1102,7 +1108,7 @@ export default function UserAgentCheckPage() {
                 ))}
               </div>
 
-              <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border">
+              <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-800/90 dark:to-slate-700/90 rounded-lg border">
                 <h3 className="font-bold text-xl mb-4 text-center">📊 উন্নত বিশ্লেষণ সামারি</h3>
 
                 {/* Basic stats */}
