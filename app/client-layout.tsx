@@ -2,13 +2,25 @@
 
 import type React from "react"
 import { usePathname } from "next/navigation"
-import Layout from "@/components/Layout"
-import AuthWrapper from "@/components/AuthWrapper"
+import { memo } from "react"
+import dynamic from "next/dynamic"
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+const Layout = dynamic(() => import("@/components/Layout"), {
+  loading: () => <div className="min-h-screen bg-slate-50 dark:bg-slate-900" />,
+})
+
+const AuthWrapper = dynamic(() => import("@/components/AuthWrapper"), {
+  loading: () => <div className="min-h-screen bg-slate-50 dark:bg-slate-900" />,
+})
+
+const ClientLayout = memo(({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname()
 
   const isLoginPage = pathname === "/login"
 
   return <AuthWrapper>{isLoginPage ? children : <Layout>{children}</Layout>}</AuthWrapper>
-}
+})
+
+ClientLayout.displayName = "ClientLayout"
+
+export default ClientLayout

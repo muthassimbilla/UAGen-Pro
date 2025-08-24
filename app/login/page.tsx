@@ -702,9 +702,9 @@ export default function LoginPage() {
               <div className="text-center space-y-4">
                 <div className="flex items-center justify-center gap-2">
                   <Lock className="w-5 h-5 text-blue-300" />
-                  <h2 className="text-xl font-semibold text-white">অ্যাকসেস কী দিয়ে প্রবেশ</h2>
+                  <h2 className="text-xl font-semibold text-white">UAgen Pro</h2>
                 </div>
-                <p className="text-blue-200 text-base">আপনার অনুমোদিত অ্যাকসেস কী ব্যবহার করুন</p>
+               
               </div>
 
               <form onSubmit={handleLogin} className="space-y-6">
