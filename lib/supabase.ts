@@ -74,12 +74,7 @@ export class BaseEntity {
 
     console.log(`Updating ${this.tableName} ${id}:`, data)
 
-    const { data: result, error } = await supabase!
-      .from(this.tableName)
-      .update({ ...data, updated_at: new Date().toISOString() })
-      .eq("id", id)
-      .select()
-      .single()
+    const { data: result, error } = await supabase!.from(this.tableName).update(data).eq("id", id).select().single()
 
     console.log(`${this.tableName} update result:`, result)
     console.log(`${this.tableName} update error:`, error)
